@@ -10,32 +10,24 @@ namespace Leets
     {
         public int Substring(string s)
         {
-            Dictionary<char, int> dict = new();
+            HashSet<char> hash = new();
             int start = 0;
             int max = 0;
 
             Console.WriteLine($"Input string: {s}");
-            Console.WriteLine("Index\tChar\tWindow\t\tStart\tMax\tDictionary");
-            Console.WriteLine("-----\t----\t------\t\t-----\t---\t----------");
 
             for (int i = 0; i < s.Length; i++)
             {
                 char currentChar = s[i];
 
-
-                if (dict.ContainsKey(currentChar) && dict[currentChar] >= start)
+                while (hash.Contains(currentChar))
                 {
-                    start = dict[currentChar] + 1;
-                    Console.WriteLine($"Updating start to {start} ");
+                    hash.Remove(s[start]);
+                    start++;
                 }
-
-                dict[currentChar] = i;
-                max = Math.Max(max, i - start + 1);
-
-                string window = s.Substring(start, i - start + 1);
-                Console.Write($"{i}\t{currentChar}\t{window,-10}\t{start}\t{max}\t");
-                // Print dictionary content
-                Console.WriteLine(string.Join(", ", dict.Select(kvp => $"{kvp.Key}:{kvp.Value}")));
+                hash.Add(currentChar);
+                max = Math.Max(max++, hash.Count);
+               
             }
 
             return max;

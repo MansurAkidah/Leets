@@ -10,34 +10,23 @@ namespace Leets
     {
         public int Substring(string s)
         {
-            int[] lastIndex = new int[128];
-            Array.Fill(lastIndex, -1);
+            Dictionary<char, int> dict = new();
 
-            int maxLength = 0;
             int start = 0;
+            int max = 0;
 
-            Console.WriteLine($"Input string: {s}");
-            Console.WriteLine("Index\tChar\tWindow\t\tLength\tMax Length");
-            Console.WriteLine("-----\t----\t------\t\t------\t----------");
-
-            for (int i = 0; i < s.Length; i++)
+            for(int i = 0; i < s.Length; i++)
             {
-                char c = s[i];
-
-                if (lastIndex[c] >= start)
+                if (dict.ContainsKey(s[i]) && dict[s[i]] >= start)
                 {
-                    start = lastIndex[c] + 1;
+                    start = dict[s[i]] + 1;
                 }
+                dict[s[i]] = i;
 
-                lastIndex[c] = i;
-                int currentLength = i - start + 1;
-                maxLength = Math.Max(maxLength, currentLength);
-
-                string window = s.Substring(start, currentLength);
-                Console.WriteLine($"{i}\t{c}\t{window,-10}\t{currentLength}\t{maxLength}");
+                max = Math.Max(max, i - start + 1);
+                
             }
-
-            return maxLength;
+            return max;
 
         }
     }

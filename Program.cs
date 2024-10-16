@@ -51,7 +51,7 @@ namespace Leets
             LengthOfLongestSubstring solution = new LengthOfLongestSubstring();
             
 
-            string[] testCases = { "abcabcbb", "bbbbb", "pwwkew" };
+            string[] testCases = { "ababab","abcabcbb", "bbbbb", "pwwkew" };
 
             foreach (string testCase in testCases)
             {

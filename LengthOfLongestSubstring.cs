@@ -10,40 +10,34 @@ namespace Leets
     {
         public int Substring(string s)
         {
-            Dictionary<char, int> lastSeen = new Dictionary<char, int>();
-            int longestLength = 0;
-            int startOfWindow = 0;
+            int[] lastIndex = new int[128];
+            Array.Fill(lastIndex, -1);
+
+            int maxLength = 0;
+            int start = 0;
 
             Console.WriteLine($"Input string: {s}");
+            Console.WriteLine("Index\tChar\tWindow\t\tLength\tMax Length");
+            Console.WriteLine("-----\t----\t------\t\t------\t----------");
 
-            for (int endOfWindow = 0; endOfWindow < s.Length; endOfWindow++)
+            for (int i = 0; i < s.Length; i++)
             {
-                char currentChar = s[endOfWindow];
+                char c = s[i];
 
-                Console.WriteLine($"\nProcessing character: {currentChar} at index {endOfWindow}");
-
-                if (lastSeen.ContainsKey(currentChar))
+                if (lastIndex[c] >= start)
                 {
-                    int oldStart = startOfWindow;
-                    startOfWindow = Math.Max(startOfWindow, lastSeen[currentChar] + 1);
-                    Console.WriteLine($"Character '{currentChar}' seen before. Moving start from {oldStart} to {startOfWindow}");
-                }
-                else
-                {
-                    Console.WriteLine($"New character '{currentChar}'");
+                    start = lastIndex[c] + 1;
                 }
 
-                int currentLength = endOfWindow - startOfWindow + 1;
-                longestLength = Math.Max(longestLength, currentLength);
+                lastIndex[c] = i;
+                int currentLength = i - start + 1;
+                maxLength = Math.Max(maxLength, currentLength);
 
-                lastSeen[currentChar] = endOfWindow;
-
-                Console.WriteLine($"Current window: {s.Substring(startOfWindow, currentLength)}");
-                Console.WriteLine($"Current length: {currentLength}, Longest length: {longestLength}");
-                Console.WriteLine($"lastSeen: {string.Join(", ", lastSeen)}");
+                string window = s.Substring(start, currentLength);
+                Console.WriteLine($"{i}\t{c}\t{window,-10}\t{currentLength}\t{maxLength}");
             }
 
-            return longestLength;
+            return maxLength;
 
         }
     }

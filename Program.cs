@@ -1,4 +1,10 @@
-﻿using Leets;
+﻿using Leets.Leizam;
+using Leets.Simple;
+using System;
+using System.Data;
+using System.Reflection;
+using System.Security.Cryptography;
+
 namespace Leets
 {
     public class Program
@@ -6,7 +12,8 @@ namespace Leets
         public static void Main()
         {
 
-            #region Testes examples
+            #region Tests examples
+            #region KCloses
             //int[][] intervals = [[1, 2], [3, 5], [6, 7], [8, 10], [12, 16]];
             //int[] newInt = [4, 8];
 
@@ -47,20 +54,57 @@ namespace Leets
             //int k = 1;
 
             //int[][] result = solution.Closest(points2, k);
+            //LengthOfLongestSubstring solution = new LengthOfLongestSubstring();
             #endregion
-            LengthOfLongestSubstring solution = new LengthOfLongestSubstring();
+            #region LengthOfLongestSubstring
+
+            //string[] testCases = { "ababab","abcabcbb", "bbbbb", "pwwkew" };
+
+            //foreach (string testCase in testCases)
+            //{
+            //    Console.WriteLine($"\n\nTesting string: {testCase}");
+            //    int result = solution.Substring(testCase);
+            //    Console.WriteLine($"Result for {testCase}: {result}"); 
+            //}
+            #endregion
+            #region ValidPalindrom
+            //string s = "A man, a plan, a canal: Panama";
+
+            //ValidPalindrome pali = new ValidPalindrome();
+            //var result = pali.IsValid(s);
+
+            //Console.WriteLine(result); 
+            #endregion
+            #region Anagram
+            //ValidAnagram ana = new ValidAnagram();
+
+            //ana.IsAnagram("anagram", "nagaram"); 
+            #endregion
+
+            #endregion
+
+            //IntArrayOperations intArrayOperations = new IntArrayOperations();
+            //intArrayOperations.MyMain(null);
+
+            //Console.WriteLine("\n\n-----------------------------Manipulating 1D arrays Done-------------------------\n\n");
+
+            //MultiArrayOperations multiArrayOperations = new MultiArrayOperations();
+            //multiArrayOperations.MyMain();
+
+            //Console.WriteLine("\n\n-----------------------------Manipulating 2D arrays Done-------------------------\n\n");
+
+            //Abbys abbys = new Abbys();
+            //abbys.MyMain();
             
+            FarmAnalogy farmAnalogy = new FarmAnalogy();
+            farmAnalogy.MyMain();
 
-            string[] testCases = { "ababab","abcabcbb", "bbbbb", "pwwkew" };
-
-            foreach (string testCase in testCases)
-            {
-                Console.WriteLine($"\n\nTesting string: {testCase}");
-                int result = solution.Substring(testCase);
-                Console.WriteLine($"Result for {testCase}: {result}");
-            }
-
-
+            Console.ReadLine();
         }
+
+
+        
+
+        
     }
 }

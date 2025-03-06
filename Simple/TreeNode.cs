@@ -1,4 +1,4 @@
-﻿namespace Leets
+﻿namespace Leets.Simple
 {
     public class TreeNode
     {

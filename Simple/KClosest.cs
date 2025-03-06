@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Leets
+namespace Leets.Simple
 {
     public class KClosest
     {
@@ -17,12 +17,12 @@ namespace Leets
 
         private int ComparePoints(int[] a, int[] b)
         {
-            var dist1 =  a[0] * a[0] + a[1] * a[1];
+            var dist1 = a[0] * a[0] + a[1] * a[1];
             var dist2 = b[0] * b[0] + b[1] * b[1];
             var n = dist1.CompareTo(dist2);
-            return n ;
+            return n;
         }
-        
+
     }
 }
 #region Explanation

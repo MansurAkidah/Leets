@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Leets
+namespace Leets.Simple
 {
     public class LengthOfLongestSubstring
     {
@@ -27,7 +27,7 @@ namespace Leets
                 }
                 hash.Add(currentChar);
                 max = Math.Max(max++, hash.Count);
-               
+
             }
 
             return max;
